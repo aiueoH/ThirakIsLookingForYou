@@ -13,6 +13,8 @@ import java.util.Calendar;
 public class MainActivityVM extends BaseObservable {
     private Context mContext;
 
+    private String mButtonText = "this is button text from VM";
+
     public MainActivityVM(Context context) {
         mContext = context;
         context.startService(new Intent(mContext, NLService.class));
@@ -26,5 +28,9 @@ public class MainActivityVM extends BaseObservable {
         String title = "TestNotification " + Calendar.getInstance().getTime().getMinutes() + " " + Calendar.getInstance().getTime().getSeconds();
         String text = "Hello! This is test notification.";
         NotificationSender.send(mContext, title, text);
+    }
+
+    public String getButtonText() {
+        return mButtonText;
     }
 }

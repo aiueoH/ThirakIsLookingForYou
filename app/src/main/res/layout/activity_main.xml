@@ -3,9 +3,7 @@
         xmlns:tools="http://schemas.android.com/tools" >
 
     <data>
-        <variable
-            name="vm"
-            type="com.dowob.thirakislookingforyou.MainActivityVM" />
+        <variable name="vm" type="com.dowob.thirakislookingforyou.MainActivityVM" />
     </data>
 
     <RelativeLayout

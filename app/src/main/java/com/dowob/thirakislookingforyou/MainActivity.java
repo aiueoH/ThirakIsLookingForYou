@@ -8,13 +8,14 @@ import com.dowob.thirakislookingforyou.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
-    private MainActivityVM vm = new MainActivityVM(this);
+    private MainActivityVM mVM;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        binding.setVm(vm);
+        mVM = new MainActivityVM(this);
+        binding.setVm(mVM);
     }
 }
