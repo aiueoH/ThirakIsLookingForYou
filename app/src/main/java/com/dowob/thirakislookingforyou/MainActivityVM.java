@@ -51,10 +51,7 @@ public class MainActivityVM extends BaseObservable {
     private boolean isNotificationServiceRunning() {
         String packageName = mContext.getPackageName();
         Set<String> enabledPackages = NotificationManagerCompat.getEnabledListenerPackages(mContext);
-        for (String enabledPackage : enabledPackages)
-            if (enabledPackage.contains(packageName))
-                return true;
-        return false;
+        return enabledPackages.contains(packageName);
     }
 
     private void updateConsole(String title, String text) {
