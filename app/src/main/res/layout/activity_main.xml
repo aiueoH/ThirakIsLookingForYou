@@ -15,12 +15,6 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="com.dowob.thirakislookingforyou.MainActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello World!"
-            android:id="@+id/textView"/>
-
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
@@ -29,17 +23,15 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{vm.buttonText}"
-                android:layout_below="@+id/textView"
-                android:layout_alignParentStart="true"
-                android:onClick="@{vm::onClickButton}"
+                android:text="@{vm.sendNotificationButtonText}"
+                android:onClick="@{vm::onClickSendNotificationButton}"
                 />
 
-            <Button
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="go to setting"
-                android:id="@+id/button_go_to_setting"/>
+                android:text="@{vm.console}"
+                />
         </LinearLayout>
 
     </RelativeLayout>
