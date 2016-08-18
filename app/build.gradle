@@ -34,4 +34,8 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
+    /**
+     * Useful android common functions. e.g. dp2px
+     */
+    compile 'com.code19.library:library:0.0.9'
 }
