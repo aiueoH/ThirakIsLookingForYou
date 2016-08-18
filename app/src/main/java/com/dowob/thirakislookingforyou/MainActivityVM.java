@@ -7,6 +7,8 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.os.Environment;
 import android.view.View;
+
+import com.code19.library.AppUtils;
 import com.dowob.thirakislookingforyou.BR;
 
 import java.util.Calendar;
@@ -22,7 +24,8 @@ public class MainActivityVM extends BaseObservable {
 
     public MainActivityVM(Context context) {
         mContext = context;
-        context.startService(new Intent(mContext, NLService.class));
+        if (!AppUtils.isServiceRunning(context, NLService.class.getName()))
+            context.startService(new Intent(mContext, NLService.class));
     }
 
     public void onClickSendNotificationButton(View view) {
