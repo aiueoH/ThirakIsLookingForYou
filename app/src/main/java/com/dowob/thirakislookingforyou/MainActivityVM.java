@@ -1,19 +1,18 @@
 package com.dowob.thirakislookingforyou;
 
-import android.content.ContentResolver;
 import android.content.Context;
-import android.content.EntityIterator;
 import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.os.Environment;
 import android.provider.Settings;
+import android.support.v4.app.NotificationManagerCompat;
 import android.view.View;
 
 import com.code19.library.AppUtils;
 import com.dowob.thirakislookingforyou.BR;
 
 import java.util.Calendar;
+import java.util.Set;
 
 /**
  * Created by Wei on 2016/7/14.
@@ -50,10 +49,12 @@ public class MainActivityVM extends BaseObservable {
     }
 
     private boolean isNotificationServiceRunning() {
-        ContentResolver contentResolver = mContext.getContentResolver();
-        String enabledNotificationListeners = Settings.Secure.getString(contentResolver, "enabled_notification_listeners");
         String packageName = mContext.getPackageName();
-        return enabledNotificationListeners != null && enabledNotificationListeners.contains(packageName);
+        Set<String> enabledPackages = NotificationManagerCompat.getEnabledListenerPackages(mContext);
+        for (String enabledPackage : enabledPackages)
+            if (enabledPackage.contains(packageName))
+                return true;
+        return false;
     }
 
     private void updateConsole(String title, String text) {
