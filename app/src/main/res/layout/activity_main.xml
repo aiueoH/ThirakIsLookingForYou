@@ -27,12 +27,25 @@
                 android:onClick="@{vm::onClickSendNotificationButton}"
                 />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/activity_main_intentNotificationSettingsButtonText"
-                android:onClick="@{vm::onClickIntentNotificationAccessSetting}"
-                />
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activity_main_intentNotificationSettingsButtonText"
+                    android:onClick="@{vm::onClickIntentNotificationAccessSetting}"
+                    />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:enabled="false"
+                    android:checked="@{vm.isEnableAccessNotification}"/>
+
+            </LinearLayout>
 
             <ScrollView
                 android:layout_width="match_parent"

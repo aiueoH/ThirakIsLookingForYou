@@ -1,5 +1,6 @@
 package com.dowob.thirakislookingforyou;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.EntityIterator;
 import android.content.Intent;
@@ -29,6 +30,10 @@ public class MainActivityVM extends BaseObservable {
             context.startService(new Intent(mContext, NLService.class));
     }
 
+    public void onResume() {
+        notifyPropertyChanged(BR.enableAccessNotification);
+    }
+
     public void onClickIntentNotificationAccessSetting(View view) {
         mContext.startActivity(new Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS));
     }
@@ -44,6 +49,13 @@ public class MainActivityVM extends BaseObservable {
         updateConsole(title, text);
     }
 
+    private boolean isNotificationServiceRunning() {
+        ContentResolver contentResolver = mContext.getContentResolver();
+        String enabledNotificationListeners = Settings.Secure.getString(contentResolver, "enabled_notification_listeners");
+        String packageName = mContext.getPackageName();
+        return enabledNotificationListeners != null && enabledNotificationListeners.contains(packageName);
+    }
+
     private void updateConsole(String title, String text) {
         mConsole += "\n" + title + "\n" + text;
         notifyPropertyChanged(BR.console);
@@ -56,5 +68,10 @@ public class MainActivityVM extends BaseObservable {
     @Bindable
     public String getConsole() {
         return mConsole;
+    }
+
+    @Bindable
+    public boolean isEnableAccessNotification() {
+       return isNotificationServiceRunning();
     }
 }

@@ -18,4 +18,10 @@ public class MainActivity extends AppCompatActivity {
         mVM = new MainActivityVM(this);
         binding.setVm(mVM);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mVM.onResume();
+    }
 }
