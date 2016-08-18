@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ThirakIsLookingForYou</string>
+    <string name="activity_main_sendNotificationButtonText">Send Notification</string>
 </resources>

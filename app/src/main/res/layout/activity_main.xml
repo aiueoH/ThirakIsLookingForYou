@@ -23,15 +23,22 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@{vm.sendNotificationButtonText}"
+                android:text="@string/activity_main_sendNotificationButtonText"
                 android:onClick="@{vm::onClickSendNotificationButton}"
                 />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@{vm.console}"
-                />
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/scrollView">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{vm.console}"
+                    />
+            </ScrollView>
+
         </LinearLayout>
 
     </RelativeLayout>
