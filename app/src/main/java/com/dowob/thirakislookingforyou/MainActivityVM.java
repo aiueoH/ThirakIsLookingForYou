@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.os.Environment;
+import android.provider.Settings;
 import android.view.View;
 
 import com.code19.library.AppUtils;
@@ -26,6 +27,10 @@ public class MainActivityVM extends BaseObservable {
         mContext = context;
         if (!AppUtils.isServiceRunning(context, NLService.class.getName()))
             context.startService(new Intent(mContext, NLService.class));
+    }
+
+    public void onClickIntentNotificationAccessSetting(View view) {
+        mContext.startActivity(new Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS));
     }
 
     public void onClickSendNotificationButton(View view) {
